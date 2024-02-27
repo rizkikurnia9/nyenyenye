@@ -19,7 +19,13 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
+
+        $login = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
 
         // Coba melakukan otentikasi
         if (Auth::attempt($credentials)) {
