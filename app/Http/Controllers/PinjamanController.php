@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\buku;
 use App\Models\Pinjaman;
 use Illuminate\Http\Request;
 
@@ -15,17 +16,19 @@ class PinjamanController extends Controller
 
     public function create()
     {
-        return view('peminjaman.create');
+        $buku = buku::all();
+        return view('peminjaman.create', compact('buku'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'UserID' => 'required',
-            'BukuID' => 'required',
+            'user_id' => 'required',
+            'buku_id' => 'required',
             'TanggalPeminjaman' => 'required',
             'TanggalPengembalian' => 'required',
-            'StatusPeminjaman' => 'required'
+            // 'StatusPeminjaman' => 'required',
+            'jumlahPinjaman' => 'required'
         ]);
 
         Pinjaman::create($request->all()); // Mengubah 'Peminjaman' menjadi 'Pinjaman'

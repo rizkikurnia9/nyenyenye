@@ -25,25 +25,21 @@
                     <form method="POST" action="{{ route('ulasan.store') }}">
                         @csrf
 
-                        <div class="form-group">
-                            <label for="UlasanID">UlasanID</label>
-                            <input type="text" class="form-control" id="UlasanID" name="UlasanID" value="{{ old('UlasanID') }}" required>
-                        </div>
 
                         <div class="form-group">
-                            <label for="UserID">User ID</label>
-                            <input type="text" class="form-control" id="UserID" name="UserID" value="{{ old('UserID') }}" required>
+                            <label for="user_id">User id</label>
+                            <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}" required>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="BukuID">Buku ID</label>
-                            <input type="date" class="form-control" id="BukuID" name="BukuID" value="{{ old('BukuID') }}" required>
+                            <label for="buku_id">Buku ID</label>
+                            <input type="text" class="form-control" id="buku_id" name="buku_id" value="{{ old('buku_id') }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="Ulasan">Ulasan</label>
-                            <input type="date" class="form-control" id="Ulasan" name="Ulasan" value="{{ old('Ulasan') }}" required>
+                            <input type="text" class="form-control" id="Ulasan" name="Ulasan" value="{{ old('Ulasan') }}" required>
                         </div>
 
                         <div class="form-group">

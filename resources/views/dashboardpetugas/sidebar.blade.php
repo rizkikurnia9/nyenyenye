@@ -15,7 +15,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Rizki Kurnia Putra</a>
+                <a href="#" class="d-block">Dashboard Petugas</a>
             </div>
         </div>
 

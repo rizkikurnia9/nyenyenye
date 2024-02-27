@@ -26,13 +26,24 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="UserID">User ID</label>
-                            <input type="text" class="form-control" id="UserID" name="UserID" value="{{ old('UserID') }}" required>
+                            <input type="hidden"  id="user_id" name="user_id" value="{{ Auth::id() }}" required readonly>
                         </div>
 
+                        {{-- <div class="form-group">
+                            <label for="buku_id">Pilih Buku:</label>
+                            <select name="buku_id" id="buku_id" class="form-control" required>
+                                @foreach($buku as $item)
+                                <option value="{{ $item->id }}">{{ $item->Judul }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
                         <div class="form-group">
-                            <label for="BukuID">User ID</label>
-                            <input type="text" class="form-control" id="BukuID" name="BukuID" value="{{ old('BukuID') }}" required>
+                            <label for="buku_id">Pilih Buku:</label>
+                            <select name="buku_id" id="buku_id" class="form-control" required>
+                                @foreach($buku as $item)
+                                <option value="{{ $item->id }}">{{ $item->Judul }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
@@ -45,14 +56,18 @@
                             <label for="TanggalPengembalian">Tanggal Pengembalian</label>
                             <input type="date" class="form-control" id="TanggalPengembalian" name="TanggalPengembalian" value="{{ old('TanggalPengembalian') }}" required>
                         </div>
-
                         <div class="form-group">
+                            <label for="jumlahPinjaman">jumlah Pinjam</label>
+                            <input type="number" class="form-control" id="jumlahPinjaman" name="jumlahPinjaman" value="{{ old('jumlahPinjaman') }}" required>
+                        </div>
+
+                        {{-- <div class="form-group">
                             <label for="StatusPeminjaman">Status Peminjaman</label>
                             <select class="form-control" id="StatusPeminjaman" name="StatusPeminjaman" required>
                                 <option value="Dipinjam">Dipinjam</option>
                                 <option value="Dikembalikan">Dikembalikan</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>

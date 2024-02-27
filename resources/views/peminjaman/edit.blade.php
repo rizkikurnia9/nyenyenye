@@ -22,15 +22,19 @@
                     @csrf
                     @method('PUT')
 
-                        <div class="form-group">
-                            <label for="UserID">UserID</label>
-                            <input type="text" class="form-control" id="UserID" name="UserID" value="{{ $pinjaman->UserID }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="BukuID">BukuID</label>
-                            <input type="text" class="form-control" id="BukuID" name="BukuID" value="{{ $pinjaman->UserID }}" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="UserID">UserID</label>
+                        <input type="hidden"  id="UserID" name="UserID" value="{{ Auth::id() }}" required readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="buku_id">Pilih Buku:</label>
+                        <select name="buku_id" id="buku_id" class="form-control" required>
+                            @foreach($buku as $item)
+                            <option value="{{ $item->id }}">{{ $item->judul }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                         <div class="form-group">
                             <label for="TanggalPeminjaman">Tanggal Peminjaman</label>

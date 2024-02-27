@@ -37,7 +37,6 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>UlasanID</th>
                     <th>UserID</th>
                     <th>BukuID</th>
                     <th>Ulasan</th>
@@ -52,11 +51,10 @@
                     @foreach ($ulasan as $ulasan) <!-- Mengganti nama variabel -->
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $ulasan->ulasanId }}</td> <!-- Menggunakan atribut yang sesuai -->
                         <td>{{ $ulasan->UserID }}</td> <!-- Menggunakan atribut yang sesuai -->
                         <td>{{ $ulasan->BukuID }}</td> <!-- Menggunakan atribut yang sesuai -->
                         <td>{{ $ulasan->Ulasan }}</td> <!-- Menggunakan atribut yang sesuai -->
-                        <td>{{ $ulasan->Rating }}</td> <!-- Menggunakan atribut yang sesuai -->
+                        <td>Bintang {{ $ulasan->Rating }}</td> <!-- Menggunakan atribut yang sesuai -->
                         <td>
                             <a href="{{ route('ulasan.edit', $ulasan->id) }}" class="btn btn-warning">Edit</a> <!-- Mengubah route -->
                             <form action="{{ route('ulasan.destroy', $ulasan->id) }}" method="POST" style="display: inline-block;">

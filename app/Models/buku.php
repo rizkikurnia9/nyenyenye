@@ -9,5 +9,6 @@ class buku extends Model
 {
     use HasFactory;
     protected $fillable = ['Judul', 'Penerbit', 'Penulis', 'TahunTerbit'];
+    protected $guarded = [];
 
 }

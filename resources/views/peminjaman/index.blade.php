@@ -36,25 +36,29 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>UserID</th>
+                    <th>Peminjam</th>
+                    <th>Judul Buku</th>
                     <th>TanggalPemijaman</th>
                     <th>TanggalPengembalian</th>
                     <th>StatusPinjaman</th>
+                     @hasanyrole('admin|petugas')
                     <th>Aksi</th>
+                    @endhasanyrole
                   </tr>
                   </thead>
                   <tbody>
                     @php
                     $no = 1;
                 @endphp
-                @foreach ($pinjaman as $peminjaman) <!-- Mengganti nama variabel $pinjaman menjadi $peminjaman -->
+                @foreach ($pinjaman as $peminjaman)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $peminjaman->UserID }}</td> <!-- Menggunakan atribut yang sesuai dengan model Pinjaman -->
-                    <td>{{ $peminjaman->BukuID }}</td> <!-- Menggunakan atribut yang sesuai dengan model Pinjaman -->
-                    <td>{{ $peminjaman->TanggalPeminjaman }}</td> <!-- Menggunakan atribut yang sesuai dengan model Pinjaman -->
-                    <td>{{ $peminjaman->TanggalPengembalian }}</td> <!-- Menggunakan atribut yang sesuai dengan model Pinjaman -->
-                    <td>{{ $peminjaman->StatusPeminjaman }}</td> <!-- Menggunakan atribut yang sesuai dengan model Pinjaman -->
+                    <td>{{ $peminjaman->user->username }}</td> <!-- Mengakses relasi user untuk mendapatkan username -->
+                    <td>{{ $peminjaman->buku->Judul }}</td> <!-- Mengakses relasi buku untuk mendapatkan judul -->
+                    <td>{{ $peminjaman->TanggalPeminjaman }}</td>
+                    <td>{{ $peminjaman->TanggalPengembalian }}</td>
+                    <td>{{ $peminjaman->StatusPeminjaman }}</td>
+                    @hasanyrole('admin|petugas')
                     <td>
                         <a href="{{ route('pinjaman.edit', $peminjaman->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('pinjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline-block;">
@@ -63,8 +67,9 @@
                             <button type="submit" class="btn btn-danger">Hapus</button>
                         </form>
                     </td>
+                    @endhasanyrole
                 </tr>
-                @endforeach                
+            @endforeach               
                   </tbody>
                   <tfoot>
                   </tfoot>

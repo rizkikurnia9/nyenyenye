@@ -29,9 +29,21 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @hasanyrole('admin|petugas')
                 <div class="mb-3">
                   <a href="{{ route('books.create') }}" class="btn btn-primary">Tambah Buku</a>
+                  <div class="float-right">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="downloadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Download
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="downloadDropdown">
+                            <a class="dropdown-item" href="{{ route('buku.download.pdf') }}"><i class="fa-regular fa-file-pdf"></i></a>
+                        </div>
+                    </div>
+                  </div>
                 </div>
+                @endhasanyrole 
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -40,7 +52,9 @@
                     <th>Penulis</th>
                     <th>Penerbit</th>
                     <th>Tahun Terbit</th>
+                    @hasanyrole('admin|petugas')
                     <th>Aksi</th>
+                    @endhasanyrole
                   </tr>
                   </thead>
                   <tbody>
@@ -54,16 +68,16 @@
                         <td>{{ $book->Penulis }}</td>
                         <td>{{ $book->Penerbit }}</td>
                         <td>{{ $book->TahunTerbit }}</td>
+                        @hasanyrole('admin|petugas')
                         <td>
-
-                          <a href="#" class="btn btn-warning">Edit</a>
+                          <a href="{{route('books.edit', $book->id)}}" class="btn btn-warning">Edit</a>
                           <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline-block;">
-
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
                             </form>
                         </td>
+                        @endhasanyrole
                     </tr>
                     @endforeach
                   </tbody>
